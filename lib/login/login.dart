@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
@@ -23,6 +25,41 @@ class FormRegist extends StatefulWidget {
 }
 
 class _FormRegistState extends State<FormRegist> {
+
+  String _verifyStr = '获取验证码';
+  int _secounds = 0;
+  Timer _timer;
+
+  //获取短信验证码
+  _getSmsCode(){
+    // 倒计时
+    if(_secounds == 0){
+      _startTimer();
+    }
+    //请求短信接口
+  }
+  _startTimer(){
+    _secounds = 60;
+    _timer = Timer.periodic(Duration(seconds: 1), (timer){
+      _secounds--;
+      if (_secounds == 0) {
+        _cancalTimer();
+        return;
+      }
+      setState(() {
+       if (_secounds == 0) {
+         _verifyStr = '重新获取';
+       } else {
+         _verifyStr = '$_secounds(s)';
+       }
+      });
+    });
+  }
+
+  _cancalTimer(){
+    _timer.cancel();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -88,7 +125,11 @@ class _FormRegistState extends State<FormRegist> {
             ),
           ) ,
               ),
-              Container(
+              GestureDetector(
+                onTap: (){
+                  _getSmsCode();
+                },
+                child: Container(
                 width: 100.0,
                 height: 30.0,
                 alignment: Alignment.center,
@@ -96,8 +137,10 @@ class _FormRegistState extends State<FormRegist> {
                   color: Color.fromRGBO(237, 237, 237, 1),
                   borderRadius: BorderRadius.circular(120.0)
                 ),
-                child: Text('获取验证码'),
+                child: Text(_verifyStr),
               ),
+              ),
+              
               SizedBox(
                 width: 10.0,
               )
