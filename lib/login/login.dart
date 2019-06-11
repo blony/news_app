@@ -1,6 +1,6 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:news_app/moudle/pub.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -30,13 +30,29 @@ class _FormRegistState extends State<FormRegist> {
   int _secounds = 0;
   Timer _timer;
 
+  String username = '';
+  String smsCode = '';
+
   //获取短信验证码
-  _getSmsCode(){
+  _getSmsCode() async {
     // 倒计时
-    if(_secounds == 0){
+    if(_secounds == 0 && username !=''){
       _startTimer();
+
+      //请求短信接口
+      PubMoudle.httpRequest('get', '/getsmscode?phone=$smsCode').then((value){
+        print(value);
+      });
+      //原生请求
+      //  var httpClient = new HttpClient();
+      //  //构造URI
+      //  var uri = new Uri.http('192.168.16.477', '/path',{'name':'小马'});
+
+      //  var request = await httpClient.getUrl(uri);
+       
+      //  var response = await request.close();
     }
-    //请求短信接口
+   
   }
   _startTimer(){
     _secounds = 60;
@@ -58,6 +74,12 @@ class _FormRegistState extends State<FormRegist> {
 
   _cancalTimer(){
     _timer.cancel();
+  }
+
+  _login(){
+    PubMoudle.httpRequest('post', 'login',{'username':username,'smscode':smsCode}).then((value){
+      print(value);
+    });
   }
 
   @override
@@ -90,7 +112,11 @@ class _FormRegistState extends State<FormRegist> {
                 fontSize: 14.0
               )
             ),
-            onChanged: (value){},
+            onChanged: (value){
+              setState(() {
+                username = value;
+              });
+            },
             onSubmitted: (value){},
           ),
         ),
@@ -120,7 +146,11 @@ class _FormRegistState extends State<FormRegist> {
                   fontSize: 14.0
                 )
               ),
-              onChanged: (value){},
+              onChanged: (value){
+               setState(() {
+                 smsCode = value;
+               });
+              },
               onSubmitted: (value){},
             ),
           ) ,
@@ -153,10 +183,8 @@ class _FormRegistState extends State<FormRegist> {
           padding: EdgeInsets.symmetric(horizontal: 10.0),
           margin: EdgeInsets.only(top: 20.0),
           child: RaisedButton(
-            color: Colors.blue,
-            disabledColor: Colors.blue,
-            onPressed: (){
-
+            onPressed: username == ''|| smsCode == '' ? null:(){
+             _login();
             },
             child: Text(
               '登录',
@@ -164,8 +192,9 @@ class _FormRegistState extends State<FormRegist> {
                 color: Colors.white
               ),
             ),
-           // disabledColor: Colors.blue[200],
             elevation: 0.0,
+            color: Colors.blue,
+            disabledColor: Colors.blue[200],
           ),
           )
       ],
