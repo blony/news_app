@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:news_app/moudle/pub.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -40,8 +41,17 @@ class _FormRegistState extends State<FormRegist> {
       _startTimer();
 
       //请求短信接口
-      PubMoudle.httpRequest('get', '/getsmscode?phone=$smsCode').then((value){
-        print(value);
+      PubMoudle.httpRequest('get', '/user/getsmscode?phone=$username').then((value){
+        print(value.data);
+        if (value.data['code'] == 1) {
+          Scaffold.of(context).showSnackBar(
+            SnackBar(content: Text('验证码发送成功'),)
+          );
+        }else {
+           Scaffold.of(context).showSnackBar(
+            SnackBar(content: Text(value['message']),)
+          );
+        }
       });
       //原生请求
       //  var httpClient = new HttpClient();
@@ -55,12 +65,12 @@ class _FormRegistState extends State<FormRegist> {
    
   }
   _startTimer(){
-    _secounds = 60;
+    _secounds = 10;
     _timer = Timer.periodic(Duration(seconds: 1), (timer){
       _secounds--;
       if (_secounds == 0) {
         _cancalTimer();
-        return;
+       // return;
       }
       setState(() {
        if (_secounds == 0) {
@@ -77,8 +87,21 @@ class _FormRegistState extends State<FormRegist> {
   }
 
   _login(){
-    PubMoudle.httpRequest('post', 'login',{'username':username,'smscode':smsCode}).then((value){
+    PubMoudle.httpRequest('post', '/user/authorzations',{'username':username,'smscode':smsCode}).then((value) async{
       print(value);
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+       print(prefs.getString('token'));
+      if (value.data['code'] == 1) {
+          Scaffold.of(context).showSnackBar(
+            SnackBar(content: Text('登录成功'),)
+          );
+            await prefs.setString('token', value.data['data']['token']);
+           
+        }else {
+           Scaffold.of(context).showSnackBar(
+            SnackBar(content: Text(value['message']),)
+          );
+        }
     });
   }
 

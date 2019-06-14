@@ -1,11 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:news_app/moudle/config.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Dio dio = new Dio();
 
 class PubMoudle {
 static httpRequest(method,url, [data]) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
   try {
+    dio.options.headers['Authorization'] = prefs.getString('token')??'';
     Response response;
     switch (method) {
       case 'get':
