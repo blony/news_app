@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
-
+import 'package:news_app/moudle/pub.dart';
+import 'home/home.dart';
 import 'login/login.dart';
 
 void main(List<String> args) {
-  runApp(App());
+  PubMoudle.checkUser().then((value){
+    runApp(App(value));
+  });
 }
 
 class App extends StatelessWidget {
+  final String token;
+  App(this.token);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: '智慧头条',
-      home: LoginPage(),
+      home: token!=null?Home():LoginPage(),
       debugShowCheckedModeBanner: false,
     );
   }
