@@ -104,7 +104,15 @@ class _FormRegistState extends State<FormRegist> {
         }
     });
   }
-
+@override
+  void initState() {
+    super.initState();
+  }
+  @override
+  void dispose() {
+    super.dispose();
+    _cancalTimer();
+  }
   @override
   Widget build(BuildContext context) {
     return Column(
