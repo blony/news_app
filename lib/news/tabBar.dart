@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class TabBarBtn extends StatelessWidget {
+  final List channels;
+  TabBarBtn(this.channels);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,26 +18,9 @@ class TabBarBtn extends StatelessWidget {
           indicatorSize: TabBarIndicatorSize.label,
           labelPadding: EdgeInsets.symmetric(horizontal: 20.0),
           isScrollable: true,
-          tabs: <Widget>[
-              Tab(
-                text: 'HTML',
-              ),
-              Tab(
-                text: 'Java',
-              ),
-              Tab(
-                text: 'Python',
-              ),
-              Tab(
-                text: 'C#',
-              ),
-              Tab(
-                text: 'JavaScript',
-              ),
-              Tab(
-                text: 'Go',
-              )
-            ],
+          tabs: channels.map((value){
+            return Tab(text: value['name'],);
+          }).toList()
           ),
       );
   }
