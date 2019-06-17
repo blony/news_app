@@ -16,8 +16,13 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: '智慧头条',
-      home: token!=null?Home():LoginPage(),
+      // home: token!=null?Home():LoginPage(),
+      home: LoginPage(),
       debugShowCheckedModeBanner: false,
+      routes: {
+        '/home':(context) => Home(),
+        '/login':(context) => LoginPage()
+      },
     );
   }
 }

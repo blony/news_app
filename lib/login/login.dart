@@ -97,6 +97,7 @@ class _FormRegistState extends State<FormRegist> {
           );
             await prefs.setString('token', value.data['data']['token']);
            
+           Navigator.pushNamedAndRemoveUntil(context, '/home', (route)=>false);
         }else {
            Scaffold.of(context).showSnackBar(
             SnackBar(content: Text(value['message']),)
