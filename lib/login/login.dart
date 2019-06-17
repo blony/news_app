@@ -83,7 +83,9 @@ class _FormRegistState extends State<FormRegist> {
   }
 
   _cancalTimer(){
-    _timer.cancel();
+   if (_timer != null) {
+      _timer.cancel();
+   }
   }
 
   _login(){
