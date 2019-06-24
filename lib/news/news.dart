@@ -27,7 +27,7 @@ class _NewsState extends State<News> {
   @override
   Widget build(BuildContext context) {
     return channels.length == 0 ? SizedBox(): DefaultTabController(
-      length: 6,
+      length: channels.length,
       child: Scaffold(
       appBar: AppBar(
         title: SearchBox(),
@@ -38,14 +38,9 @@ class _NewsState extends State<News> {
         )
       ),
       body: TabBarView(
-        children: <Widget>[
-          TabBarContent(),
-           TabBarContent(),
-            TabBarContent(),
-             TabBarContent(),
-              TabBarContent(),
-               TabBarContent()
-        ],
+        children: channels.map((value){
+          return TabBarContent(value['id']);
+        }).toList()
       ),
     ),
     );
