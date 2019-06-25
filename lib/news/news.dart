@@ -4,6 +4,8 @@ import 'package:news_app/news/searchBox.dart';
 import 'package:news_app/news/tabBar.dart';
 import 'package:news_app/news/tabContent.dart';
 
+
+//  新闻主页
 class News extends StatefulWidget {
   @override
   _NewsState createState() => _NewsState();

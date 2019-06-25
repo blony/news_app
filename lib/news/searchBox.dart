@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// 顶部搜索框
 class SearchBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

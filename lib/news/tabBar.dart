@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+
+// 新闻分类btn组
 class TabBarBtn extends StatelessWidget {
   final List channels;
   TabBarBtn(this.channels);

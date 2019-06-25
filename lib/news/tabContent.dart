@@ -3,6 +3,8 @@ import 'package:news_app/moudle/pub.dart';
 import 'package:news_app/news/module/article.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
+
+// 新闻列表详情
 class TabBarContent extends StatefulWidget {
   final int id;
   TabBarContent(this.id);
@@ -16,6 +18,7 @@ class _TabBarContentState extends State<TabBarContent> {
   int page = 1;
   ScrollController _controller = ScrollController();
 
+/// 获取新闻数据，[type]判断是否为上拉加载
   _getData([type]) async{
   var data = await PubMoudle.httpRequest('post', '/getartcles',{'id':widget.id,'page':page});
   // print(data.data['data']['results']);
@@ -39,6 +42,7 @@ class _TabBarContentState extends State<TabBarContent> {
     _getData();
   }
 
+// 组件初始化逻辑
   @override
   void initState() {
     super.initState();
