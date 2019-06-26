@@ -4,6 +4,8 @@ import 'package:news_app/news/searchBox.dart';
 import 'package:news_app/news/tabBar.dart';
 import 'package:news_app/news/tabContent.dart';
 
+import 'drawer.dart';
+
 
 //  新闻主页
 class News extends StatefulWidget {
@@ -15,6 +17,8 @@ class _NewsState extends State<News> {
 
   var channels =[];
 
+
+// 获取新闻类型数据
   _getChannels() async{
     var data = await PubMoudle.httpRequest('get', '/getchannels');
     setState(() {
@@ -44,6 +48,7 @@ class _NewsState extends State<News> {
           return TabBarContent(value['id']);
         }).toList()
       ),
+      drawer: DrawerList(),
     ),
     );
   }
