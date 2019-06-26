@@ -17,7 +17,6 @@ class _NewsState extends State<News> {
 
   var channels =[];
 
-
 // 获取新闻类型数据
   _getChannels() async{
     var data = await PubMoudle.httpRequest('get', '/getchannels');
@@ -48,7 +47,7 @@ class _NewsState extends State<News> {
           return TabBarContent(value['id']);
         }).toList()
       ),
-      drawer: DrawerList(),
+      drawer: DrawerList(_getChannels),
     ),
     );
   }

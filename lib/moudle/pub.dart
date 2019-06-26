@@ -17,6 +17,9 @@ class PubMoudle {
         case 'post':
         response = await dio.post(Config.baseURL+url,data:data);
         break;
+        case 'delete':
+        response = await dio.delete(Config.baseURL+url,data:data);
+        break;
       }
       return response;
     } catch (err) {
