@@ -1,3 +1,5 @@
+// 数据序列化模块
+
 class Article {
   int artId;
   String title;

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/detail/detail.dart';
 import 'package:news_app/moudle/pub.dart';
 import 'package:news_app/news/module/article.dart';
 import 'package:timeago/timeago.dart' as timeago;
@@ -64,7 +65,14 @@ class _TabBarContentState extends State<TabBarContent> {
         child: ListView.builder(
           itemCount: _list.length,
           itemBuilder: (context,index){
-            return NewsItem(_list[index]);
+            return GestureDetector(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context)=> DetailPage(_list[index].artId)
+                ));
+              },
+              child: NewsItem(_list[index]),
+            );
           },
           controller: _controller,
         )
