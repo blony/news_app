@@ -38,9 +38,20 @@ class _DetailPageState extends State<DetailPage> {
             ]),
           ),
           //作者 
-          SliverPersistentHeader(
+          MediaQuery.removePadding(
+            context: context,
+            removeBottom: true,
+            child: SliverPersistentHeader(
             pinned: true,
             delegate: _SliverAppBarDelegete(
+              childBar: AppBar(
+                title: Text('title'),
+                backgroundColor: Colors.red,
+                leading: IconButton(
+                  icon: Icon(Icons.arrow_back_ios,color: Colors.white,),
+                  onPressed: (){},
+                ),
+              ),
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 20.0),
                 child: Row(
@@ -98,6 +109,7 @@ class _DetailPageState extends State<DetailPage> {
                 ),
               )
             ),
+          ),
           ),
           SliverList(
             delegate: SliverChildListDelegate([
@@ -232,7 +244,8 @@ class _DetailPageState extends State<DetailPage> {
 
 class _SliverAppBarDelegete extends SliverPersistentHeaderDelegate {
   final Widget child;
-  _SliverAppBarDelegete({this.child});
+  final Widget childBar;
+  _SliverAppBarDelegete({this.child,this.childBar});
 
   @override
   double get minExtent => 80.0;
@@ -242,7 +255,13 @@ class _SliverAppBarDelegete extends SliverPersistentHeaderDelegate {
 
   @override
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return SizedBox(child: child,);
+    print(shrinkOffset);
+    if (shrinkOffset > 0 ) {
+       return SizedBox(child: childBar,);
+    } else {
+       return SizedBox(child: child,);
+    }
+
   }
 
   @override
