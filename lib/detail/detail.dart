@@ -45,12 +45,73 @@ class _DetailPageState extends State<DetailPage> {
             pinned: true,
             delegate: _SliverAppBarDelegete(
               childBar: AppBar(
-                title: Text('title'),
-                backgroundColor: Colors.red,
+                brightness: Brightness.light, //控制系统顶部标题颜色
+                elevation: 0.0,
+                title: Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        SizedBox(
+                          width: 30.0,
+                          height: 30.0,
+                          child: GestureDetector(
+                            onTap: (){},
+                            child: CircleAvatar(
+                              backgroundImage: NetworkImage('https://img2.woyaogexing.com/2019/06/25/5434ac6094b54878a50e331be18f2fff!400x400.jpeg'),
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 10.0,),
+                        Text(
+                          '流星偃月',
+                          style: TextStyle(
+                            fontSize: 14.0,
+                            color: Colors.black
+                            ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      width: 75.0,
+                      height: 22.0,
+                      child: RaisedButton.icon(
+                      onPressed: (){},
+                      icon: Icon(
+                        Icons.add,
+                        color: Colors.white,
+                        size: 12.0,
+                        ),
+                      label: Text(
+                        '关注',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 12.0
+                        ),),
+                      elevation: 0.0,
+                      color: Colors.blue,
+                    ),
+                    )
+                  ],
+                ),
+              ),
+                backgroundColor: Color.fromRGBO(247, 247, 247, 1),
                 leading: IconButton(
-                  icon: Icon(Icons.arrow_back_ios,color: Colors.white,),
+                  icon: Icon(
+                    Icons.arrow_back_ios,
+                    color: Colors.grey,),
                   onPressed: (){},
                 ),
+                actions: <Widget>[
+                  IconButton(
+                    icon: Icon(
+                      Icons.more_horiz,
+                      color: Colors.grey,
+                    ),
+                    onPressed: (){},
+                  )
+                ],
               ),
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -248,10 +309,10 @@ class _SliverAppBarDelegete extends SliverPersistentHeaderDelegate {
   _SliverAppBarDelegete({this.child,this.childBar});
 
   @override
-  double get minExtent => 80.0;
+  double get minExtent => 90.0;
 
   @override
-  double get maxExtent => 100.0;
+  double get maxExtent => 90.0;
 
   @override
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
