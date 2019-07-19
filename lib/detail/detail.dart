@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:news_app/detail/share_sheet.dart';
 
 class DetailPage extends StatefulWidget {
   final int id;
@@ -21,6 +22,12 @@ class _DetailPageState extends State<DetailPage> {
                 icon: Icon(Icons.more_horiz),
                 onPressed: (){
                   print('点击了');
+                  showModalBottomSheet(
+                    context: context,
+                    builder: (BuildContext context){
+                      return ShareSheet();
+                    }
+                  );
                 },
               )
             ],
