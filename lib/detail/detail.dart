@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:news_app/detail/share_sheet.dart';
 import 'package:news_app/moudle/pub.dart';
 import 'package:timeago/timeago.dart' as timeago;
+
+import 'comment.dart';
 class DetailPage extends StatefulWidget {
   final int id;
   DetailPage(this.id);
@@ -292,7 +294,6 @@ _getDetail() async{
                   ),
                   GestureDetector(
                     onTap: (){
-
                     },
                     child: Container(
                       padding: EdgeInsets.symmetric(horizontal: 10.0,vertical: 2.0),
@@ -313,7 +314,8 @@ _getDetail() async{
                     ),
                   )
                 ],
-              )
+              ),
+              Comment()
             ]),
           )
         ],
