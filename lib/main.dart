@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/moudle/pub.dart';
+import 'package:news_app/search/search_page.dart';
 import 'home/home.dart';
 import 'login/login.dart';
 
@@ -21,7 +22,8 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         '/home':(context) => Home(),
-        '/login':(context) => LoginPage()
+        '/login':(context) => LoginPage(),
+        '/search':(context) => SearchPage()
       },
     );
   }

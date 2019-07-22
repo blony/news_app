@@ -6,6 +6,7 @@ class SearchBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
+        Navigator.pushNamed(context, '/search');
         print('点击了搜索');
       },
       child: Container(
