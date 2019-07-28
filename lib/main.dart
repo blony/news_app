@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/chat/chat.dart';
 import 'package:news_app/moudle/pub.dart';
 import 'package:news_app/search/search_page.dart';
 import 'home/home.dart';
@@ -23,7 +24,8 @@ class App extends StatelessWidget {
       routes: {
         '/home':(context) => Home(),
         '/login':(context) => LoginPage(),
-        '/search':(context) => SearchPage()
+        '/search':(context) => SearchPage(),
+        '/chat':(context) => ChatPage()
       },
     );
   }

@@ -27,6 +27,9 @@ class UserList extends StatelessWidget {
         ),
         Divider(height: 0.0,),
         ListTile(
+          onTap: (){
+            Navigator.pushNamed(context, '/chat');
+          },
           title: Text(
             '小智同学'
           ),
