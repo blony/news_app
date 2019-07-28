@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:news_app/chat/chat.dart';
 import 'package:news_app/moudle/pub.dart';
 import 'package:news_app/redux/init.dart';
@@ -19,20 +20,33 @@ class App extends StatelessWidget {
 
   final store = new Store <AppState>(
     appReducer,
+    initialState: AppState(
+      themeData: ThemeData(
+        primaryColor: Colors.blue
+      )
+    )
   );
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: '智慧头条',
-      // home: token!=null?Home():LoginPage(),
-      home: LoginPage(),
-      debugShowCheckedModeBanner: false,
-      routes: {
-        '/home':(context) => Home(),
-        '/login':(context) => LoginPage(),
-        '/search':(context) => SearchPage(),
-        '/chat':(context) => ChatPage()
-      },
+    return StoreProvider(
+      store: store,
+      child: StoreBuilder<AppState>(
+        builder: (context, store){
+          return MaterialApp(
+            title: '智慧头条',
+            home: token!=null?Home():LoginPage(),
+            // home: LoginPage(),
+            debugShowCheckedModeBanner: false,
+            theme: store.state.themeData,
+            routes: {
+              '/home':(context) => Home(),
+              '/login':(context) => LoginPage(),
+              '/search':(context) => SearchPage(),
+              '/chat':(context) => ChatPage()
+            },
+          );
+        },
+      )
     );
   }
 }
