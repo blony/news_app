@@ -13,6 +13,9 @@ class UserList extends StatelessWidget {
         ),
         Divider(height: 0.0,),
         ListTile(
+          onTap: (){
+            Navigator.pushNamed(context, 'approve');
+          },
           title: Text(
             '实名认证'
           ),

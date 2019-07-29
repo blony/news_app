@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:news_app/approve/approve.dart';
 import 'package:news_app/chat/chat.dart';
 import 'package:news_app/moudle/pub.dart';
 import 'package:news_app/redux/init.dart';
@@ -42,7 +43,8 @@ class App extends StatelessWidget {
               '/home':(context) => Home(),
               '/login':(context) => LoginPage(),
               '/search':(context) => SearchPage(),
-              '/chat':(context) => ChatPage()
+              '/chat':(context) => ChatPage(),
+              'approve':(context) => ApprovePage()
             },
           );
         },
