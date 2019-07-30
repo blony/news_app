@@ -58,7 +58,7 @@ class ApprovePage extends StatelessWidget {
     );
   }
 
-  Widget tapButton(){
+  Widget tapButton(context){
     return Container(
       margin: EdgeInsets.only(top: 25.0,left: 15.0,right: 15.0),
       decoration: BoxDecoration(
@@ -66,7 +66,9 @@ class ApprovePage extends StatelessWidget {
         borderRadius: BorderRadius.circular(6.0)
       ),
       child: FlatButton(
-        onPressed: (){},
+        onPressed: (){
+          Navigator.pushNamed(context, '/imageupload');
+        },
         child: Text(
           '申请身份认证',
           style: TextStyle(
@@ -92,7 +94,7 @@ class ApprovePage extends StatelessWidget {
             ApproveContent(),
             Divider(height: 10.0,),
             prerogative(),
-            tapButton()
+            tapButton(context)
           ],
         ),
       )

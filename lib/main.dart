@@ -5,6 +5,7 @@ import 'package:news_app/chat/chat.dart';
 import 'package:news_app/moudle/pub.dart';
 import 'package:news_app/redux/init.dart';
 import 'package:news_app/search/search_page.dart';
+import 'approve/upload.dart';
 import 'home/home.dart';
 import 'login/login.dart';
 import 'package:redux/redux.dart';
@@ -44,7 +45,8 @@ class App extends StatelessWidget {
               '/login':(context) => LoginPage(),
               '/search':(context) => SearchPage(),
               '/chat':(context) => ChatPage(),
-              'approve':(context) => ApprovePage()
+              'approve':(context) => ApprovePage(),
+              '/imageupload':(context) => ImageUpload()
             },
           );
         },
