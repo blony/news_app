@@ -1,6 +1,83 @@
 import 'package:flutter/material.dart';
 
 class ApprovePage extends StatelessWidget {
+
+  // 认证特选Widget
+  Widget prerogative(){
+    return Container(
+      color: Colors.white,
+      child: Column(
+        children: <Widget>[
+          ListTile(
+            title: Text(
+              '认证特权'
+            ),
+          ),
+          Divider(height: 0.0,),
+          ListTile(
+            leading: CircleAvatar(
+              backgroundColor: Colors.blue[100],
+              child: Icon(Icons.star_border),
+            ),
+            title: Text(
+              '独家标识'
+            ),
+            subtitle: Text(
+              '享有独家标识，彰显独特身份'
+            ),
+          ),
+          Divider(height: 0.0,),
+          ListTile(
+            leading: CircleAvatar(
+              backgroundColor: Colors.blue[100],
+              child: Icon(Icons.star_border),
+            ),
+            title: Text(
+              '优先推荐'
+            ),
+            subtitle: Text(
+              '内容优先推荐，增加曝光快速涨粉'
+            ),
+          ),
+          Divider(height: 0.0,),
+          ListTile(
+            leading: CircleAvatar(
+              backgroundColor: Colors.blue[100],
+              child: Icon(Icons.star_border),
+            ),
+            title: Text(
+              '更多特权'
+            ),
+            subtitle: Text(
+              '更多认证用户专享功能'
+            ),
+          ),
+          Divider(height: 0.0,)
+        ],
+      ),
+    );
+  }
+
+  Widget tapButton(){
+    return Container(
+      margin: EdgeInsets.only(top: 25.0,left: 15.0,right: 15.0),
+      decoration: BoxDecoration(
+        color: Colors.blue,
+        borderRadius: BorderRadius.circular(6.0)
+      ),
+      child: FlatButton(
+        onPressed: (){},
+        child: Text(
+          '申请身份认证',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 16.0,
+            fontWeight: FontWeight.normal
+          ),
+        ),
+      ),
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,7 +89,10 @@ class ApprovePage extends StatelessWidget {
         color: Colors.grey[200],
         child: ListView(
           children: <Widget>[
-            ApproveContent()
+            ApproveContent(),
+            Divider(height: 10.0,),
+            prerogative(),
+            tapButton()
           ],
         ),
       )
