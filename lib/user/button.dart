@@ -26,7 +26,9 @@ class PubBtn extends StatelessWidget {
     return Expanded(
       child: GestureDetector(
         onTap: (){
-
+          if (str == '历史' || str == '收藏') {
+            Navigator.pushNamed(context, '/collect');
+          }
         },
         child: Column(
           children: <Widget>[
