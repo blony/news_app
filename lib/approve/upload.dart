@@ -1,6 +1,32 @@
+import 'dart:io';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:news_app/moudle/pub.dart';
 
 class ImageUpload extends StatelessWidget {
+   Widget tapButton(context){
+    return Container(
+      margin: EdgeInsets.only(top: 25.0,left: 15.0,right: 15.0),
+      decoration: BoxDecoration(
+        color: Colors.blue,
+        borderRadius: BorderRadius.circular(6.0)
+      ),
+      child: FlatButton(
+        onPressed: (){
+          // Navigator.pushNamed(context, '/imageupload');
+        },
+        child: Text(
+          '下一步',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 16.0,
+            fontWeight: FontWeight.normal
+          ),
+        ),
+      ),
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +39,8 @@ class ImageUpload extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             InputBox(),
-            ImageLoad()
+            ImageLoad(),
+            tapButton(context)
           ],
         ),
       )
@@ -93,6 +120,42 @@ class ImageLoad extends StatefulWidget {
 }
 
 class _ImageLoadState extends State<ImageLoad> {
+
+  File _image_f;
+  File _image_b;
+  File _image_a;
+
+  //图片上传
+  _uploadImage(File image , name) async{
+    FormData imageForm = FormData.from({
+      'image':UploadFileInfo(image,'$name')
+    });
+    var result = await PubMoudle.httpRequest('post', '/uploadImage',imageForm);
+    print(result);
+  }
+
+  _getImage(type) async{
+   File _getImage = await ImagePicker.pickImage(source: ImageSource.gallery);
+   switch (type) {
+     case 'f':
+        setState(() {
+          _image_f = _getImage;
+        });
+     break;
+     case 'b':
+      setState(() {
+            _image_b = _getImage;
+          });
+     break;
+     case 'a':
+      setState(() {
+            _image_a = _getImage;
+          });
+     break;
+   }
+   
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -113,20 +176,22 @@ class _ImageLoadState extends State<ImageLoad> {
             children: <Widget>[
               SizedBox(width: 10.0,),
               Expanded(
-                child: GestureDetector(
-                  onTap: (){
-
-                  },
-                  child: Image.asset('images/IDcard1.png'),
-                ),
+                child:SizedBox(
+                  child:  GestureDetector(
+                    onTap: (){
+                      _getImage('f');
+                    },
+                    child: _image_f == null? Image.asset('images/IDcard1.png') : Image.file(_image_f),
+                  ),
+                )
               ),
               SizedBox(width: 15.0,),
                Expanded(
                 child: GestureDetector(
                   onTap: (){
-
+                    _getImage('b');
                   },
-                  child: Image.asset('images/IDcard2.png'),
+                  child: _image_b == null? Image.asset('images/IDcard2.png') : Image.file(_image_b),
                 ),
               ),
               SizedBox(width: 10.0,)
@@ -136,9 +201,9 @@ class _ImageLoadState extends State<ImageLoad> {
             padding: EdgeInsets.all(10.0),
             child: GestureDetector(
               onTap: (){
-                
+                 _getImage('a');
               },
-              child: Image.asset('images/IDcard3.png'),
+              child: _image_a == null? Image.asset('images/IDcard3.png') : Image.file(_image_a),
             ),
           )
         ],
