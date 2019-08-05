@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/user/collect/collect.dart';
 
 class UserBtn extends StatelessWidget {
   @override
@@ -27,7 +28,11 @@ class PubBtn extends StatelessWidget {
       child: GestureDetector(
         onTap: (){
           if (str == '历史' || str == '收藏') {
-            Navigator.pushNamed(context, '/collect');
+            // Navigator.pushNamed(context, '/collect');
+            // 路由跳转，传参
+            Navigator.push(context, MaterialPageRoute(
+              builder: (context) => CollectPage(str)
+            ));
           }
         },
         child: Column(

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'content.dart';
 
 class CollectPage extends StatelessWidget {
+  final String str;
+  CollectPage(this.str);
 
   final List<Tab> myTabs = <Tab>[
     Tab(
@@ -16,6 +18,7 @@ class CollectPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
+      initialIndex: str == '历史' ? 1: 0,
       length: 2,
       child: Scaffold(
         appBar: AppBar(

@@ -48,7 +48,7 @@ class App extends StatelessWidget {
               '/chat':(context) => ChatPage(),
               'approve':(context) => ApprovePage(),
               '/imageupload':(context) => ImageUpload(),
-              '/collect':(context) => CollectPage()
+              // '/collect':(context) => CollectPage()
             },
           );
         },

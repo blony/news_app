@@ -1,10 +1,31 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:news_app/moudle/pub.dart';
 
-class CollectContent extends StatelessWidget {
+class CollectContent extends StatefulWidget {
   final String text;
   CollectContent(this.text);
   @override
+  _CollectContentState createState() => _CollectContentState();
+}
+
+class _CollectContentState extends State<CollectContent> {
+
+ List collectData;
+  _getData() async{
+  var collectResult = await PubMoudle.httpRequest('get', '/getCollect?type=${widget.text == '我的收藏' ? 1 : 2}');
+  setState(() {
+    collectData = collectResult;
+  });
+  }
+
+  @override
+
+  void initState(){
+    super.initState();
+    _getData();
+  }
+
   Widget build(BuildContext context) {
     return Container(
       child: ListView(
