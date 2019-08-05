@@ -6,6 +6,7 @@ import 'package:news_app/moudle/pub.dart';
 import 'package:news_app/redux/init.dart';
 import 'package:news_app/search/search_page.dart';
 import 'package:news_app/user/collect/collect.dart';
+import 'package:news_app/user/works/works.dart';
 import 'approve/upload.dart';
 import 'home/home.dart';
 import 'login/login.dart';
@@ -49,6 +50,7 @@ class App extends StatelessWidget {
               'approve':(context) => ApprovePage(),
               '/imageupload':(context) => ImageUpload(),
               // '/collect':(context) => CollectPage()
+              '/works':(context) => WorksPage()
             },
           );
         },

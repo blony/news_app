@@ -33,6 +33,8 @@ class PubBtn extends StatelessWidget {
             Navigator.push(context, MaterialPageRoute(
               builder: (context) => CollectPage(str)
             ));
+          } else {
+             Navigator.pushNamed(context, '/works');
           }
         },
         child: Column(
