@@ -39,8 +39,8 @@ class WorksPage extends StatelessWidget {
       body: TabBarView(
         children: <Widget>[
           WorksContent(),
-          WorksContent(),
-          WorksContent()
+          NoticeContent(),
+          DataContent()
         ],
       ),
       ),
@@ -153,6 +153,123 @@ class _WorksContentState extends State<WorksContent> {
               ],
             ),
           )
+        ],
+      ),
+    );
+  }
+}
+
+class NoticeContent extends StatefulWidget {
+  @override
+  _NoticeContentState createState() => _NoticeContentState();
+}
+
+class _NoticeContentState extends State<NoticeContent> {
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: <Widget>[
+        Container(
+          color: Colors.white,
+          padding: EdgeInsets.symmetric(vertical: 5.0),
+          child: ListTile(
+            title: Text(
+              '屋檐如悬崖，风铃如沧海，我等燕归来。时间被安排，演一场意外，你悄然走开',
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+            contentPadding: EdgeInsets.all(15.0),
+            subtitle: Padding(
+              padding: EdgeInsets.only(top: 6.0),
+              child: Text(
+                '2018-07-08'
+              ),
+            ),
+          ),
+        ),
+        Container(
+          color: Colors.white,
+          padding: EdgeInsets.symmetric(vertical: 5.0),
+          child: ListTile(
+            title: Text(
+              '屋檐如悬崖，风铃如沧海，我等燕归来。时间被安排，演一场意外，你悄然走开',
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+            contentPadding: EdgeInsets.all(15.0),
+            subtitle: Padding(
+              padding: EdgeInsets.only(top: 6.0),
+              child: Text(
+                '2018-07-08'
+              ),
+            ),
+          ),
+        ),
+        Container(
+          color: Colors.white,
+          padding: EdgeInsets.symmetric(vertical: 5.0),
+          child: ListTile(
+            title: Text(
+              '屋檐如悬崖，风铃如沧海，我等燕归来。时间被安排，演一场意外，你悄然走开',
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+            contentPadding: EdgeInsets.all(15.0),
+            subtitle: Padding(
+              padding: EdgeInsets.only(top: 6.0),
+              child: Text(
+                '2018-07-08'
+              ),
+            ),
+          ),
+        )
+      ],
+    );
+  }
+}
+
+class DataContent extends StatefulWidget {
+  @override
+  _DataContentState createState() => _DataContentState();
+}
+
+class _DataContentState extends State<DataContent> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10.0),
+      padding: EdgeInsets.symmetric(vertical: 15.0),
+      color: Colors.white,
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            child: Column(
+              children: <Widget>[
+                Text(
+                  '56',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w600
+                  ),
+                  ),
+                Text('粉丝数')
+              ],
+            ),
+          ),
+          Expanded(
+            child: Column(
+              children: <Widget>[
+                Text(
+                  '866',
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w600
+                    ),
+                  ),
+                Text('累计阅读量')
+              ],
+            ),
+          ),
         ],
       ),
     );
