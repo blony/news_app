@@ -31,6 +31,7 @@ dependencies:
   flutter_redux: ^0.5.3
   image_picker: ^0.6.1
   cached_network_image: ^1.1.1
+  flutter_swiper: ^1.1.6
 
 dev_dependencies:
   flutter_test:
@@ -53,6 +54,10 @@ flutter:
    - images/IDcard1.png
    - images/IDcard2.png
    - images/IDcard3.png
+   - images/splash.png
+   - images/1.png
+   - images/2.png
+   - images/3.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

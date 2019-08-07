@@ -7,6 +7,8 @@ import 'package:news_app/redux/init.dart';
 import 'package:news_app/search/search_page.dart';
 import 'package:news_app/user/collect/collect.dart';
 import 'package:news_app/user/works/works.dart';
+import 'package:news_app/welcome/swiperpage.dart';
+import 'package:news_app/welcome/welcome_page.dart';
 import 'approve/upload.dart';
 import 'home/home.dart';
 import 'login/login.dart';
@@ -38,8 +40,9 @@ class App extends StatelessWidget {
         builder: (context, store){
           return MaterialApp(
             title: '智慧头条',
-            home: token!=null?Home():LoginPage(),
-            // home: LoginPage(),
+            // home: token!=null?Home():LoginPage(),
+            // home: WelcomePage(token),
+            home:SwiperPage(),
             debugShowCheckedModeBanner: false,
             theme: store.state.themeData,
             routes: {
