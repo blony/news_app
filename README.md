@@ -1,6 +1,7 @@
 # news_app
 
 News App   ——Flutter project.
+news app.
 
 ## Getting Started
 
