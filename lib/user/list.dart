@@ -43,6 +43,9 @@ class UserList extends StatelessWidget {
         ),
         Divider(height: 0.0,),
         ListTile(
+          onTap: (){
+            Navigator.pushNamed(context, '/sysset');
+          },
           title: Text(
             '系统设置'
           ),
