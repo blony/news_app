@@ -6,6 +6,7 @@ import 'package:news_app/moudle/pub.dart';
 import 'package:news_app/redux/init.dart';
 import 'package:news_app/search/search_page.dart';
 import 'package:news_app/user/collect/collect.dart';
+import 'package:news_app/user/message.dart';
 import 'package:news_app/user/works/works.dart';
 import 'package:news_app/welcome/swiperpage.dart';
 import 'package:news_app/welcome/welcome_page.dart';
@@ -53,7 +54,8 @@ class App extends StatelessWidget {
               'approve':(context) => ApprovePage(),
               '/imageupload':(context) => ImageUpload(),
               // '/collect':(context) => CollectPage()
-              '/works':(context) => WorksPage()
+              '/works':(context) => WorksPage(),
+              '/message':(context) => MessagePage()
             },
           );
         },

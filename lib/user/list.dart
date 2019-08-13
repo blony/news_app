@@ -6,6 +6,9 @@ class UserList extends StatelessWidget {
     return Column(
       children: <Widget>[
         ListTile(
+          onTap: (){
+            Navigator.pushNamed(context, '/message');
+          },
           title: Text(
             '消息通知'
           ),
