@@ -31,6 +31,50 @@ class SysSet extends StatelessWidget {
                 Divider(height: 0.0,)
               ],
             ),
+          ),
+           Container(
+            color: Colors.white,
+            margin: EdgeInsets.only(top: 5.0),
+            child: Column(
+              children: <Widget>[
+                ListTile(
+                  title: Text('清除缓存'),
+                  trailing: Text('12M'),
+                ),
+                Divider(height: 0.0,),
+                ListTile(
+                  title: Text('字体大小'),
+                  trailing: Text('中'),
+                ),
+                Divider(height: 0.0,),
+                ListTile(
+                  title: Text('推送通知'),
+                  trailing: Switch(
+                    onChanged: (value){
+                      print(value);
+                    },
+                    value: false,
+                  ),
+                ),
+                Divider(height: 0.0,)
+              ],
+            ),
+          ),
+          Container(
+            color: Colors.white,
+            margin: EdgeInsets.only(top: 30.0),
+            child: FlatButton(
+              onPressed: (){
+                Navigator.pushNamed(context, '/login');
+              },
+              child: Text(
+                '退出登录',
+                style: TextStyle(
+                  color: Colors.blue,
+                  fontSize: 16.0
+                ),
+                ),
+            ),
           )
         ],
       ),
