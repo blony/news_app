@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:news_app/moudle/msg.dart';
+//import 'package:news_app/moudle/msg.dart';
 import 'package:news_app/redux/init.dart';
 
 
@@ -27,7 +27,7 @@ class ChatMain extends StatefulWidget {
 class _ChatMainState extends State<ChatMain> {
 
   _sendMsg(str){
-    MsgSocket.sendMsg(str);
+  //  MsgSocket.sendMsg(str);
   }
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class _ChatMainState extends State<ChatMain> {
       children: <Widget>[
         Expanded(
           child: StoreBuilder<AppState>(builder: (context, store){
-            MsgSocket.link(store);
+           // MsgSocket.link(store);
             return ListView(  //ListView不能和其他组件共享区域
               children: store.state.chatList.map((value){
                 return Padding(
